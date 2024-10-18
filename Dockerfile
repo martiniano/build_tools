@@ -1,5 +1,4 @@
-FROM ubuntu:16.04
-
+FROM nuclearis/ubuntu:16.04-qt-5.9.9
 ENV TZ=Etc/UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
