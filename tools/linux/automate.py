@@ -60,9 +60,9 @@ if not base.is_file("./node_js_setup_14.x"):
   print("install dependencies...")
   deps.install_deps()
 
-if not base.is_dir("./qt_build"):  
-  print("install qt...")
-  install_qt()
+#if not base.is_dir("./qt_build"):  
+#  print("install qt...")
+#  install_qt()
 
 branch = get_branch_name("../..")
 

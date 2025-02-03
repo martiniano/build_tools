@@ -502,7 +502,7 @@ def git_update(repo, is_no_errors=False, is_current_dir=False, git_owner=""):
 
   unlimited_organization = "martiniano"
   unlimited_tag_suffix = "-nuclearis"
-  unlimited_modified_repos = ["server", "web-apps"]
+  unlimited_modified_repos = ["server", "web-apps", "sdkjs"]
   if (repo in unlimited_modified_repos):
     owner = unlimited_organization
     branch_to_checkout = config.option("branch")
