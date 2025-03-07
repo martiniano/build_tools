@@ -535,7 +535,18 @@ def get_ssh_base_url():
 def git_update(repo, is_no_errors=False, is_current_dir=False, git_owner=""):
   print("[git] update: " + repo)
   owner = git_owner if git_owner else "ONLYOFFICE"
-  url = "https://github.com/" + owner + "/" + repo + ".git"
+  pat = get_env("PERSONAL_ACCESS_TOKEN")
+  print("[git] personal-access-token: " + pat)
+  tag_suffix = os.getenv("TAG_SUFFIX", "-nuclearis")
+  print("[git] tag-suffix: " + tag_suffix)
+  modified_repos = ["server", "web-apps", "sdkjs"]
+  if (repo in modified_repos):
+    branch_to_checkout = config.option("branch")
+    url = "https://" + pat + "@dev.azure.com/nuclearis/Nuclearis/_git/Nuclearis.Onlyoffice." + repo
+  else:
+    branch_to_checkout = re.sub(tag_suffix, '', config.option("branch"))
+    url = "https://github.com/" + owner + "/" + repo + ".git"
+  print("[git] repository: " + url)
   if git_is_ssh():
     url = get_ssh_base_url() + repo + ".git"
   folder = get_script_dir() + "/../../" + repo
